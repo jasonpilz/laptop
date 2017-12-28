@@ -1,54 +1,76 @@
-# Launchme
+# Laptop
 
-> Mac OS has `launchd` to boot and maintain services; `launchme` is script to
-setup/install/upgrade my prefferred apps & configurations for web development.
+> A script to setup/install/upgrade my preferred apps & configurations for web
+development.
 
 ## Usage
 
 ## What it sets up
 
-- Karabiner-elements
-- Postman
-- Authy
 
-Native Settings?
-* Keyboard - key repeat
-
-Tools
+**Tools & Packages**
+* Xcode commandline tools
 * Homebrew
-* ASDF
-* RVM
-* Bundler
-* Node.js
-* NPM
-* Exuberant Ctags
 * Git
-* Zsh
-* Heroku CLI / Toolbelt
-* AWS CLI
-* The Silver Searcher
+* Heroku CLI
 * Tmux
-* Ruby
-* Elixir
-* Oracle Instant Client
-* Zsh
-
-Homebrew
 * Rabbitmq
 * MySQL
 * PostgreSQL
+* Authy
+* Postman
+* The Silver Searcher
+* Karabiner-elements
+* Zsh
+* Exuberant Ctags
+* AWS CLI
 
-Mac OS Apps
+**Mac OS Apps**
 * Slack
 * Docker for Mac
-* Slack
 * Flux
 * Github Desktop
 * Atom
+* iTerm2
 
-Configuration
-* Personal dotfiles
+**Configuration**
+*
 
+## Overrides
+
+`~/.laptop.local` is run at the end of the `mac` script.
+Further customizations can be added there. If you want to install additional
+tools or Mac apps with Homebrew, add them to your `~/Brewfile.local`.
+
+Write your customizations such that they can be run safely more than once.
+
+Laptop functions such as `fancy_echo`, and `gem_install_or_update` can be used
+in your `~/.laptop.local`.
+
+## TODO
+
+- [ ] Keyboard - key repeat
+
+- [ ] Personal dotfiles (clone, symlink, ect)
+
+- [ ] Oh-my-Zsh
+- [ ] Powerline fonts
+- [ ] Vundle (+ Install plugins)
+- [ ] ASDF
+- [ ] RVM
+- [ ] NPM
+- [ ] Node.js
+- [ ] Bundler
+- [ ] Ruby
+- [ ] Elixir
+
+- [ ] Oracle Instant Client
+        * tap "instantclienttap/instantclient"
+        * brew "instantclienttap/instantclient/instantclient-basic"
+        * brew "instantclienttap/instantclient/instantclient-sdk"
+        * brew "instantclienttap/instantclient/instantclient-sqlplus"
+
+- [ ] Split DNS VPN via openconnect
 
 ## Credits
 
