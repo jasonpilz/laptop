@@ -63,8 +63,7 @@ else
   fancy_echo "Homebrew already installed. Skipping ..."
 fi
 
-# Remove brew-cask since it is now installed as part of brew tap caskroom/cask.
-# See https://github.com/caskroom/homebrew-cask/releases/tag/v0.60.0
+# https://github.com/caskroom/homebrew-cask/releases/tag/v0.60.0
 if brew_is_installed 'brew-cask'
 then
   fancy_echo "Removing legacy brew-cask since its now part of caskroom/cask ..."
@@ -90,7 +89,8 @@ else
 fi
 
 fancy_echo "Installing formulas and casks from the Brewfile ..."
-brew update --force # https://github.com/Homebrew/brew/issues/1151
+# https://github.com/Homebrew/brew/issues/1151
+brew update --force
 if brew bundle --file="$HOME/Brewfile"
 then
   fancy_echo "All formulas and casks were installed successfully."
