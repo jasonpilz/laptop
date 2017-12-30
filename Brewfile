@@ -7,6 +7,7 @@ tap "universal-ctags/universal-ctags"
 brew 'git'
 brew 'openssl'
 brew 'openssh'
+brew 'autoconf'
 brew "universal-ctags", args: ["HEAD"]
 brew 'openconnect'
 brew 'ack'

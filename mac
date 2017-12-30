@@ -124,10 +124,11 @@ install_asdf_plugin() {
 
 install_asdf_language() {
   local language="$1"
-  local version
-  version="$(asdf list-all "$language" | tail -1)"
+  local latest_available="$(asdf list-all "$language" | grep -v '[A-Za-z-]' | tail -1)"
+  local version="${2:-$latest_available}"
 
-  if ! asdf list "$language" | grep -Fq "$version"; then
+  if ! asdf list "$language" | grep -Fq "$version"
+  then
     asdf install "$language" "$version"
     asdf global "$language" "$version"
   fi
@@ -142,3 +143,30 @@ install_asdf_plugin "elixir" "https://github.com/asdf-vm/asdf-elixir.git"
 install_asdf_plugin "python" "https://github.com/tuvistavie/asdf-python.git"
 install_asdf_plugin "golang" "https://github.com/kennyp/asdf-golang.git"
 
+fancy_echo "Installing latest Ruby..."
+install_asdf_language "ruby"
+
+fancy_echo "Installing latest Node..."
+# Import the Node.js release team's OpenPGP keys to main keyring:
+bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+install_asdf_language "nodejs"
+
+fancy_echo "Installing latest erlang..."
+install_asdf_language "erlang" "20.0"
+
+fancy_echo "Installing latest elixir..."
+install_asdf_language "elixir"
+
+fancy_echo "Installing latest python..."
+install_asdf_language "python"
+
+fancy_echo "Installing latest golang..."
+install_asdf_language "golang"
+
+# Rubygems and Bundler
+# -----------------------------------------------------------------------------
+gem update --system
+gem_install_or_update "bundler"
+
+number_of_cores=$(sysctl -n hw.ncpu)
+bundle config --global jobs $((number_of_cores - 1))
