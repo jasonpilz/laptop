@@ -7,7 +7,6 @@ development.
 
 ## What it sets up
 
-
 **Tools & Packages**
 * Xcode commandline tools
 * Homebrew
@@ -63,6 +62,7 @@ in your `~/.laptop.local`.
 - [ ] Bundler
 - [ ] Ruby
 - [ ] Elixir
+- [ ] Erlang
 
 - [ ] Oracle Instant Client
         * tap "instantclienttap/instantclient"
