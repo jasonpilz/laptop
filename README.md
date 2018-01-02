@@ -23,6 +23,14 @@ development.
 * Zsh
 * Exuberant Ctags
 * AWS CLI
+* Bundler
+* ASDF Version manager
+* Node.js
+* Ruby
+* Elixir
+* Erlang
+* Python
+* Golang
 
 **Mac OS Apps**
 * Slack
@@ -55,14 +63,6 @@ in your `~/.laptop.local`.
 - [ ] Oh-my-Zsh
 - [ ] Powerline fonts
 - [ ] Vundle (+ Install plugins)
-- [ ] ASDF
-- [ ] RVM
-- [ ] NPM
-- [ ] Node.js
-- [ ] Bundler
-- [ ] Ruby
-- [ ] Elixir
-- [ ] Erlang
 
 - [ ] Oracle Instant Client
         * tap "instantclienttap/instantclient"

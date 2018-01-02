@@ -56,9 +56,6 @@ then
   fancy_echo "Installing Homebrew ..."
     curl -fsSL \
       'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
-
-    # shellcheck disable=SC2016
-    # append_to_file "$shell_file" 'export PATH="/usr/local/bin:$PATH"'
 else
   fancy_echo "Homebrew already installed. Skipping ..."
 fi
@@ -124,8 +121,10 @@ install_asdf_plugin() {
 
 install_asdf_language() {
   local language="$1"
-  local latest_available="$(asdf list-all "$language" | grep -v '[A-Za-z-]' | tail -1)"
+  local latest_available
   local version="${2:-$latest_available}"
+
+  latest_available="$(asdf list-all "$language" | grep -v '[A-Za-z-]' | tail -1)"
 
   if ! asdf list "$language" | grep -Fq "$version"
   then
@@ -134,6 +133,7 @@ install_asdf_language() {
   fi
 }
 
+# shellcheck disable=SC1090
 source "$HOME/.asdf/asdf.sh"
 
 install_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
@@ -170,3 +170,11 @@ gem_install_or_update "bundler"
 
 number_of_cores=$(sysctl -n hw.ncpu)
 bundle config --global jobs $((number_of_cores - 1))
+
+# Customizations
+# -----------------------------------------------------------------------------
+if [ -f "$HOME/.laptop.local" ]; then
+  fancy_echo "Running customizations from ~/.laptop.local ..."
+  # shellcheck disable=SC1090
+  . "$HOME/.laptop.local"
+fi
