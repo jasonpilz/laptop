@@ -41,7 +41,7 @@ development.
 * iTerm2
 
 **Configuration**
-*
+* Split DNS via openconnect
 
 ## Overrides
 
@@ -57,20 +57,17 @@ in your `~/.laptop.local`.
 ## TODO
 
 - [ ] Keyboard - key repeat
-
 - [ ] Personal dotfiles (clone, symlink, ect)
-
 - [ ] Oh-my-Zsh
 - [ ] Powerline fonts
 - [ ] Vundle (+ Install plugins)
-
 - [ ] Oracle Instant Client
-        * tap "instantclienttap/instantclient"
-        * brew "instantclienttap/instantclient/instantclient-basic"
-        * brew "instantclienttap/instantclient/instantclient-sdk"
-        * brew "instantclienttap/instantclient/instantclient-sqlplus"
-
-- [ ] Split DNS VPN via openconnect
+    ```sh
+    tap instantclienttap/instantclient
+    brew instantclienttap/instantclient/instantclient-basic
+    brew instantclienttap/instantclient/instantclient-sdk
+    brew instantclienttap/instantclient/instantclient-sqlplus
+    ```
 
 ## Credits
 
