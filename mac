@@ -173,9 +173,19 @@ bundle config --global jobs $((number_of_cores - 1))
 
 # Support split DNS with openconnect
 # -----------------------------------------------------------------------------
-mv /usr/local/etc/vpnc-script /usr/local/etc/vpnc-script.bak
-curl "https://raw.githubusercontent.com/batmanppc/vpnc-scripts/43e21edbf1683804f08364cef7269ed7bc81687c/vpnc-script" > /usr/local/etc/vpnc-script
-chmod +x /usr/local/etc/vpnc-script
+if [ ! -f /usr/local/etc/vpnc-script.bak ]
+then
+  mv /usr/local/etc/vpnc-script /usr/local/etc/vpnc-script.bak
+  curl "https://raw.githubusercontent.com/batmanppc/vpnc-scripts/43e21edbf1683804f08364cef7269ed7bc81687c/vpnc-script" > /usr/local/etc/vpnc-script
+  chmod +x /usr/local/etc/vpnc-script
+fi
+
+# Oh-my-zsh
+# -----------------------------------------------------------------------------
+if [ ! -d "$HOME/.oh-my-zsh" ]
+then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
 
 # Customizations
 # -----------------------------------------------------------------------------
