@@ -187,6 +187,14 @@ then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
+# Vundle and install plugins
+# -----------------------------------------------------------------------------
+if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]
+then
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  vim +PluginInstall +qall
+fi
+
 # Customizations
 # -----------------------------------------------------------------------------
 if [ -f "$HOME/.laptop.local" ]; then

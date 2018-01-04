@@ -5,6 +5,11 @@ development.
 
 ## Usage
 
+From the terminal:
+```sh
+bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop)
+```
+
 ## What it sets up
 
 **Tools & Packages**
@@ -20,7 +25,6 @@ development.
 * Postman
 * The Silver Searcher
 * Karabiner-elements
-* Zsh
 * Exuberant Ctags
 * AWS CLI
 * Bundler
@@ -31,6 +35,9 @@ development.
 * Erlang
 * Python
 * Golang
+* Zsh
+* Oh-my-Zsh
+* Vundle (+ Install plugins)
 
 **Mac OS Apps**
 * Slack
@@ -56,11 +63,11 @@ in your `~/.laptop.local`.
 
 ## TODO
 
+- Uninstall NVM
+
 - [ ] Keyboard - key repeat
 - [ ] Personal dotfiles (clone, symlink, ect)
-- [ ] Oh-my-Zsh
 - [ ] Powerline fonts
-- [ ] Vundle (+ Install plugins)
 - [ ] Oracle Instant Client
     ```sh
     tap instantclienttap/instantclient
