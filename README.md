@@ -50,24 +50,18 @@ bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop)
 
 **Configuration**
 * Split DNS via openconnect
+* Personal dotfiles
 
 ## Overrides
 
-`~/.laptop.local` is run at the end of the `mac` script.
-Further customizations can be added there. If you want to install additional
-tools or Mac apps with Homebrew, add them to your `~/Brewfile.local`.
-
-Write your customizations such that they can be run safely more than once.
-
-Laptop functions such as `fancy_echo`, and `gem_install_or_update` can be used
-in your `~/.laptop.local`.
+`~/.laptop.local` is run at the end of the `mac` script.  Further customizations
+can be added there.
 
 ## TODO
 
 - Uninstall NVM
 - Travis CI
 
-- [ ] Personal dotfiles (clone, symlink, ect)
 - [ ] Oracle Instant Client (separate script)
     ```sh
     tap instantclienttap/instantclient
