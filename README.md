@@ -38,6 +38,7 @@ bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop)
 * Zsh
 * Oh-my-Zsh
 * Vundle (+ Install plugins)
+* Powerline fonts
 
 **Mac OS Apps**
 * Slack
@@ -64,17 +65,18 @@ in your `~/.laptop.local`.
 ## TODO
 
 - Uninstall NVM
+- Travis CI
 
-- [ ] Keyboard - key repeat
 - [ ] Personal dotfiles (clone, symlink, ect)
-- [ ] Powerline fonts
-- [ ] Oracle Instant Client
+- [ ] Oracle Instant Client (separate script)
     ```sh
     tap instantclienttap/instantclient
     brew instantclienttap/instantclient/instantclient-basic
     brew instantclienttap/instantclient/instantclient-sdk
     brew instantclienttap/instantclient/instantclient-sqlplus
     ```
+- [ ] Keyboard - key repeat
+- [ ] Customize iTerm2
 
 ## Credits
 

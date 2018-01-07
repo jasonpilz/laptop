@@ -195,6 +195,17 @@ then
   vim +PluginInstall +qall
 fi
 
+# Powerline fonts
+# -----------------------------------------------------------------------------
+if [ ! -d "$HOME/code_support/fonts" ]
+then
+  mkdir -p "$HOME/code_support" && cd "$_"
+  git clone https://github.com/powerline/fonts.git --depth=1
+  cd fonts
+  ./install.sh
+  cd ~
+fi
+
 # Customizations
 # -----------------------------------------------------------------------------
 if [ -f "$HOME/.laptop.local" ]; then
