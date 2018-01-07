@@ -6,7 +6,7 @@ fancy_echo() {
   local fmt="$1"; shift
 
   # shellcheck disable=SC1117
-  printf "\n$fmt\n" "$@"
+  printf "\n%s\n" "$fmt" "$@"
 }
 
 append_to_file() {
