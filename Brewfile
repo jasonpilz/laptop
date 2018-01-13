@@ -79,8 +79,6 @@ mas "1Password",       id: 443987910
 mas "DaisyDisk",       id: 411643860
 mas "Divvy",           id: 413857545
 mas "Type Fu",         id: 509818877
-mas "World Clock Pro", id: 858446756
-mas "Should I Sleep",  id: 560851219
 mas "Pixelmator",      id: 407963104
 mas "Slack",           id: 803453959
 mas "Xcode",           id: 497799835

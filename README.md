@@ -136,8 +136,8 @@ can be added there.
 
 - [  ] Mas errors
   ```sh
-  should I sleep
-  world clock pro
+  mas "World Clock Pro", id: 858446756
+  mas "Should I Sleep",  id: 560851219
   ```
 
 ## Credits
