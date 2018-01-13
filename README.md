@@ -1,3 +1,5 @@
+<img src="icon.png" align="right" />
+
 # Laptop
 
 > A script to setup/install/upgrade my preferred apps & configurations for web
