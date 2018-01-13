@@ -3,7 +3,7 @@
 > A script to setup/install/upgrade my preferred apps & configurations for web
 development.
 
-![Build Status](https://travis-ci.org/jasonpilz/laptop.svg?branch=master)
+[![Build Status](https://travis-ci.org/jasonpilz/laptop.svg)](https://travis-ci.org/jasonpilz/laptop)
 
 ## Usage
 
