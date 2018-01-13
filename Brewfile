@@ -16,7 +16,6 @@ brew 'bash'
 brew "asciinema"
 brew "mas"
 brew 'wget'
-brew 'htop'
 brew 'httpie'
 brew 'tree'
 brew 'gist'
@@ -30,7 +29,6 @@ brew 'postgresql', restart_service: :changed
 brew 'redis', restart_service: :changed
 brew 'mongodb', restart_service: :changed
 brew 'mysql', restart_service: :changed
-brew 'mysql-connector-java'
 brew 'sqlite'
 brew 'shellcheck'
 brew 'hub'

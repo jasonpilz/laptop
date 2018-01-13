@@ -1,4 +1,4 @@
-<img src="osx_laptop.png" align="right" />
+<img src="osx_laptop.png" align="center" />
 
 # Laptop
 
@@ -127,6 +127,12 @@ can be added there.
   ```
 
 - [ ] Customize iTerm2
+
+- [  ] Brewfile errors
+  ```sh
+  htop
+
+  ```
 
 ## Credits
 

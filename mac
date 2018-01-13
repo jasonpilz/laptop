@@ -1,12 +1,18 @@
 #!/bin/bash
 
+# red=$'\e[0;31m'
+yel=$'\e[0;33m'
+cyn=$'\e[0;36m'
+end=$'\e[0m'
+
 # Helpers
 # -----------------------------------------------------------------------------
-fancy_echo() {
-  local fmt="$1"; shift
+print_header() {
+  printf "%s\\n\\n===> %s \\n\\n%s" "$cyn" "$1" "$end"
+}
 
-  # shellcheck disable=SC1117
-  printf "\n%s\n" "$fmt" "$@"
+print_warn() {
+  printf "%s\\nWarn: $1%s\\n\\n" "$yel" "$end"
 }
 
 append_to_file() {
@@ -28,10 +34,10 @@ tap_is_installed() {
 
 gem_install_or_update() {
   if gem list "$1" | grep "^$1 ("; then
-    fancy_echo "Updating %s ..." "$1"
+    print_header "Updating %s" "$1"
     gem update "$@"
   else
-    fancy_echo "Installing %s ..." "$1"
+    print_header "Installing %s" "$1"
     gem install "$@"
   fi
 }
@@ -40,30 +46,21 @@ gem_install_or_update() {
 # -----------------------------------------------------------------------------
 mkdir -p {"$HOME/code","$HOME/code_support"}
 
-# Xcode
-# -----------------------------------------------------------------------------
-if xcode-select --install
-then
-  fancy_echo "Installed xcode commandline tools."
-else
-  fancy_echo "xcode commandline tools already installed. Skipping ..."
-fi
-
 # Homebrew
 # -----------------------------------------------------------------------------
 if ! command -v brew >/dev/null
 then
-  fancy_echo "Installing Homebrew ..."
+  print_header "Installing Homebrew"
     curl -fsSL \
       'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
 else
-  fancy_echo "Homebrew already installed. Skipping ..."
+  print_warn "Homebrew already installed. Skipping"
 fi
 
 # https://github.com/caskroom/homebrew-cask/releases/tag/v0.60.0
 if brew_is_installed 'brew-cask'
 then
-  fancy_echo "Removing legacy brew-cask since its now part of caskroom/cask ..."
+  print_header "Removing legacy brew-cask since its now part of caskroom/cask"
   brew uninstall --force 'brew-cask'
 fi
 
@@ -72,43 +69,51 @@ then
   brew untap caskroom/versions
 fi
 
-# fancy_echo "Updating Homebrew ..."
+# print_header "Updating Homebrew ..."
 # cd "$(brew --repo)" && git fetch && git reset --hard origin/master && brew update
 
-fancy_echo "Verifying the Homebrew installation..."
+print_header "Verifying the Homebrew installation"
 if brew doctor
 then
-  fancy_echo "Your Homebrew installation is good to go."
+  print_header "Your Homebrew installation is good to go"
 else
-  fancy_echo "Your Homebrew installation reported some errors or warnings."
-
-  echo "Review the Homebrew messages to see if any action is needed."
+  print_warn "Your Homebrew installation reported some errors or warnings"
 fi
 
-fancy_echo "Installing formulas and casks from the Brewfile ..."
+print_header "Installing formulas and casks from the Brewfile"
 # https://github.com/Homebrew/brew/issues/1151
 brew update --force
 if brew bundle --file="$HOME/Brewfile"
 then
-  fancy_echo "All formulas and casks were installed successfully."
+  print_header "All formulas and casks were installed successfully"
 else
-  fancy_echo "Some formulas or casks failed to install."
-
-  echo "This is usually due to one of the Mac apps being already installed,"
-  echo "in which case, you can ignore these errors."
+  print_warn "Some formulas or casks failed to install"
 fi
 
-fancy_echo "Cleaning up old Homebrew formulae ..."
+print_header "Cleaning up old Homebrew formulae"
 brew cleanup
 brew cask cleanup
 
+# Xcode
+# -----------------------------------------------------------------------------
+if xcode-select --install
+then
+  print_header "Installed xcode commandline tools"
+else
+  print_warn "Xcode commandline tools already installed. Skipping"
+fi
+
 # ASDF
 # -----------------------------------------------------------------------------
-fancy_echo "Configuring asdf version manager..."
+print_header "Configuring asdf version manager"
 if [ ! -d "$HOME/.asdf" ]
 then
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.1
+
+  # shellcheck disable=SC1090
+  source "$HOME/.asdf/asdf.sh"
 fi
+
 
 install_asdf_plugin() {
   local name="$1"
@@ -133,8 +138,6 @@ install_asdf_language() {
   fi
 }
 
-# shellcheck disable=SC1090
-source "$HOME/.asdf/asdf.sh"
 
 install_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
 install_asdf_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
@@ -143,31 +146,34 @@ install_asdf_plugin "elixir" "https://github.com/asdf-vm/asdf-elixir.git"
 install_asdf_plugin "python" "https://github.com/tuvistavie/asdf-python.git"
 install_asdf_plugin "golang" "https://github.com/kennyp/asdf-golang.git"
 
-fancy_echo "Installing latest Ruby..."
+print_header "Installing latest Ruby"
 install_asdf_language "ruby"
 
-fancy_echo "Installing latest Node..."
+print_header "Installing latest Node"
 # Import the Node.js release team's OpenPGP keys to main keyring:
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 install_asdf_language "nodejs"
 
-fancy_echo "Installing latest erlang..."
+print_header "Installing latest erlang"
 install_asdf_language "erlang" "20.0"
 
-fancy_echo "Installing latest elixir..."
+print_header "Installing latest elixir"
 install_asdf_language "elixir"
 
-fancy_echo "Installing latest python..."
+print_header "Installing latest python"
 install_asdf_language "python"
 
-fancy_echo "Installing latest golang..."
+print_header "Installing latest golang"
 install_asdf_language "golang"
 
 # Rubygems and Bundler
 # -----------------------------------------------------------------------------
+print_header "Updating Rubygems"
 gem update --system
+print_header "Installing Bundler"
 gem_install_or_update "bundler"
 
+print_header "Bundle config jobs"
 number_of_cores=$(sysctl -n hw.ncpu)
 bundle config --global jobs $((number_of_cores - 1))
 
@@ -175,6 +181,7 @@ bundle config --global jobs $((number_of_cores - 1))
 # -----------------------------------------------------------------------------
 if [ ! -d "$HOME/code_support/fonts" ]
 then
+  print_header "Installing Powerline Fonts"
   mkdir -p "$HOME/code_support" && (cd "$_" || true)
 
   git clone https://github.com/powerline/fonts.git --depth=1
@@ -182,12 +189,21 @@ then
   ./fonts/install.sh
 fi
 
+# Oh-my-zsh
+# -----------------------------------------------------------------------------
+if [ ! -d "$HOME/.oh-my-zsh" ]
+then
+  print_header "Installing Oh-my-zsh"
+  cd || true
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+
 # Dotfiles
 # -----------------------------------------------------------------------------
 if [ ! -d "$HOME/code_support/dotfiles" ]
 then
-  cd "$HOME/code_support" || true
-  git clone git@github.com:jasonpilz/dotfiles.git
+  print_header "Installing dotfiles"
+  git clone https://github.com/jasonpilz/dotfiles.git "$HOME/code_support/dotfiles"
   active=(
     agignore
     aliases
@@ -206,14 +222,6 @@ then
   for dotfile in "${active[@]}"; do
     ln -s "$HOME/code_support/dotfiles/$dotfile" "$HOME/.$dotfile"
   done
-fi
-
-# Oh-my-zsh
-# -----------------------------------------------------------------------------
-if [ ! -d "$HOME/.oh-my-zsh" ]
-then
-  cd || true
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
 # Vundle and install plugins
@@ -236,7 +244,7 @@ fi
 # Customizations
 # -----------------------------------------------------------------------------
 if [ -f "$HOME/.laptop.local" ]; then
-  fancy_echo "Running customizations from ~/.laptop.local ..."
+  print_header "Running customizations from ~/.laptop.local ..."
   # shellcheck disable=SC1090
   . "$HOME/.laptop.local"
 fi
