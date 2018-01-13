@@ -1,4 +1,4 @@
-<img src="osx_laptop.png" align="center" />
+<img src="osx_laptop.png" align="right" />
 
 # Laptop
 
