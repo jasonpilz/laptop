@@ -69,12 +69,11 @@ cask 'postman'
 cask "ngrok"
 cask 'iterm2'
 cask 'atom'
-cask "tuntap"
 cask 'flux'
 cask 'karabiner-elements'
 cask 'datagrip'
 cask 'sequel-pro'
-cask 'github-desktop'
+cask 'github'
 
 mas "1Password",       id: 443987910
 mas "DaisyDisk",       id: 411643860
@@ -85,4 +84,3 @@ mas "Should I Sleep",  id: 560851219
 mas "Pixelmator",      id: 407963104
 mas "Slack",           id: 803453959
 mas "Xcode",           id: 497799835
-

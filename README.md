@@ -123,7 +123,8 @@ can be added there.
   - key repeat speed
   - key mappings
   - dock settings
-  - trackpad settings
+  - trackpad - tap to click
+  - trackpad - app expose
   ```
 
 - [ ] Customize iTerm2
@@ -131,7 +132,12 @@ can be added there.
 - [  ] Brewfile errors
   ```sh
   htop
-  gpg-suite
+  ```
+
+- [  ] Mas errors
+  ```sh
+  should I sleep
+  world clock pro
   ```
 
 ## Credits

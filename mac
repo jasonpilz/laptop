@@ -184,11 +184,9 @@ bundle config --global jobs $((number_of_cores - 1))
 if [ ! -d "$HOME/code_support/fonts" ]
 then
   print_header "Installing Powerline Fonts"
-  mkdir -p "$HOME/code_support" && (cd "$_" || true)
+  git clone https://github.com/powerline/fonts.git --depth=1 "$HOME/code_support/fonts"
 
-  git clone https://github.com/powerline/fonts.git --depth=1
-
-  ./fonts/install.sh
+  ~/code_support/fonts/install.sh
 else
   print_warn "Powerline Fonts already installed"
 fi
