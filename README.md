@@ -14,45 +14,92 @@ bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop)
 
 ## What it sets up
 
-**Tools & Packages**
-* Xcode commandline tools
-* Homebrew
-* Git
-* Heroku CLI
-* Tmux
-* Rabbitmq
-* MySQL
-* PostgreSQL
-* Authy
-* Postman
-* The Silver Searcher
-* Karabiner-elements
-* Exuberant Ctags
-* AWS CLI
-* Bundler
-* ASDF Version manager
-* Node.js
-* Ruby
-* Elixir
-* Erlang
-* Python
-* Golang
-* Zsh
-* Oh-my-Zsh
-* Vundle (+ Install plugins)
-* Powerline fonts
+[Xcode]: https://developer.apple.com/xcode/features/
+[Homebrew]: https://brew.sh/
+[Git]: https://git-scm.com/
+[Heroku]: https://www.heroku.com/
+[Heroku CLI]: https://devcenter.heroku.com/articles/heroku-cli
+[Amazon Web Services]: https://aws.amazon.com/
+[AWS CLI]: https://aws.amazon.com/cli/
+[Tmux]: https://github.com/tmux/tmux
+[The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
+[Exuberant Ctags]: http://ctags.sourceforge.net/
+[ASDF]: https://github.com/asdf-vm/asdf
+[Zsh]: http://zsh.sourceforge.net/
+[Vundle]: https://github.com/VundleVim/Vundle.vim
+[Powerline fonts]: https://github.com/powerline/fonts
+[Split DNS]: https://github.com/batmanppc/vpnc-scripts/blob/master/vpnc-script
+[Dotfiles]: https://github.com/jasonpilz/dotfiles
+[Bundler]: https://bundler.io/
+[Oh-my-Zsh]: https://github.com/robbyrussell/oh-my-zsh
+[PostgreSQL]: https://www.postgresql.org/
+[MySQL]: https://www.mysql.com/
+[RabbitMQ]: https://www.rabbitmq.com/
+[Node.js]: https://nodejs.org/en/
+[Ruby]: https://www.ruby-lang.org/en/
+[Elixir]: https://elixir-lang.org/
+[Erlang]: https://www.erlang.org/
+[Python]: https://www.python.org/
+[Golang]: https://golang.org/
+[Slack]: https://slack.com/
+[Docker for Mac]: https://www.docker.com/docker-mac
+[Postman]: https://www.getpostman.com/
+[Karabiner-Elements]: https://github.com/tekezo/Karabiner-Elements
+[Flux]: https://justgetflux.com/
+[Authy]: https://authy.com/
+[Github Desktop]: https://desktop.github.com/
+[Atom]: https://atom.io/
+[iTerm2]: https://www.iterm2.com/
+
+**Mac OS Tools**
+* [Xcode] - Command Line Tools
+* [Homebrew] - Mac OS package manager
+
+**Unix Tools**
+* [Git] - Version control
+* [Tmux] - Terminal multiplexer
+* [The Silver Searcher] - project/file search
+* [Exuberant Ctags] - Index files for Vim
+* [Zsh] - Shell
+* [Heroku CLI] - Command Line interface to [Heroku]
+* [AWS CLI] - Command Line interface to [Amazon Web Services]
+
+**Version/Package Managers**
+* [ASDF] - Version manager for languages
+* [Bundler] - Package manager for Ruby
+* [Oh-my-Zsh] - Zsh plugin manager
+* [Vundle] - Vim plugin manager + Install plugins
+
+**Programming Languages**
+* [Ruby] - A dynamic, OS language built for developer happiness
+* [Elixir] - a dynamic, functional language designed for building
+scalable and maintainable applications
+* [Erlang] - functional language which Elixir is built upon
+* [Golang] - a compiled, statically typed language
+* [Python] - an interpreted high-level programming language for
+general-purpose programming
+* [Node.js] - JavaScript runtime for server-side programming
+
+**Custom Configuration**
+* [Powerline fonts] - Patched fonts for Powerline users
+* [Split DNS] - Replace `vpnc-script` that openconnect ships with to support split DNS configuration
+* [Dotfiles] - Install my personal dotfiles/configurations
+
+**Databases / Brokers**
+* [PostgreSQL] - Relational DBMS
+* [MySQL] - Relation DBMS
+* [RabbitMQ] - Message broker
 
 **Mac OS Apps**
-* Slack
-* Docker for Mac
-* Flux
-* Github Desktop
-* Atom
-* iTerm2
-
-**Configuration**
-* Split DNS via openconnect
-* Personal dotfiles
+* [Slack] - Team communication
+* [Docker for Mac] - Application containerization
+* [Postman] - API testing
+* [Karabiner-Elements] - Keyboard customization tool
+* [Flux] - Screen color adjustment
+* [Authy] - 2FA
+* [Github Desktop] - Desktop git client
+* [Atom] - Code editor
+* [iTerm2] - Terminal replacement
 
 ## Overrides
 
@@ -61,9 +108,6 @@ can be added there.
 
 ## TODO
 
-- Uninstall NVM
-- Travis CI
-
 - [ ] Oracle Instant Client (separate script)
     ```sh
     tap instantclienttap/instantclient
@@ -71,7 +115,15 @@ can be added there.
     brew instantclienttap/instantclient/instantclient-sdk
     brew instantclienttap/instantclient/instantclient-sqlplus
     ```
-- [ ] Keyboard - key repeat
+
+- [ ] OS X Native Customization
+  ```sh
+  - key repeat speed
+  - key mappings
+  - dock settings
+  - trackpad settings
+  ```
+
 - [ ] Customize iTerm2
 
 ## Credits
