@@ -129,12 +129,12 @@ can be added there.
 
 - [ ] Customize iTerm2
 
-- [  ] Brewfile errors
+- [ ] Brewfile errors
   ```sh
   htop
   ```
 
-- [  ] Mas errors
+- [ ] Mas errors
   ```sh
   mas "World Clock Pro", id: 858446756
   mas "Should I Sleep",  id: 560851219

@@ -274,7 +274,8 @@ print_header "Split DNS"
 if [ ! -f /usr/local/etc/vpnc-script.bak ]
 then
   mv /usr/local/etc/vpnc-script /usr/local/etc/vpnc-script.bak
-  curl "https://raw.githubusercontent.com/batmanppc/vpnc-scripts/43e21edbf1683804f08364cef7269ed7bc81687c/vpnc-script" > /usr/local/etc/vpnc-script
+  curl "https://raw.githubusercontent.com/batmanppc/vpnc-scripts/43e21edbf1683804f08364cef7269ed7bc81687c/vpnc-script" \
+    > /usr/local/etc/vpnc-script
   chmod +x /usr/local/etc/vpnc-script
 
   print_success "Configuration complete"
@@ -289,4 +290,6 @@ if [ -f "$HOME/.laptop.local" ]
 then
   # shellcheck disable=SC1090
   . "$HOME/.laptop.local"
+else
+  print_warn "No ~/.laptop.local file available. Skipping"
 fi
