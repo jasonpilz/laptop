@@ -128,6 +128,17 @@ can be added there.
   ```
 
 - [ ] Customize iTerm2
+  ```sh
+  Profiles -> Text -> Font
+    12pt Roboto Mono for Powerline
+    Character spacing Horizontal 93%
+    Character spacing Vertical 93%
+    Use Ligatures
+
+  Appearance -> Tabs
+    Tab bar location: Bottom
+    Theme: Dark
+  ```
 
 - [ ] Brewfile errors
   ```sh
