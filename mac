@@ -12,7 +12,7 @@ print_header() {
 }
 
 print_warn() {
-  printf "%s\\nWarn: $1%s\\n" "$yel" "$end"
+  printf "%sWarn: $1%s\\n" "$yel" "$end"
 }
 
 append_to_file() {
@@ -137,7 +137,7 @@ install_asdf_language() {
     asdf install "$language" "$version"
     asdf global "$language" "$version"
   else
-    print_warn "Version %s already installed" "$version"
+    print_warn "Version $version already installed"
   fi
 }
 
