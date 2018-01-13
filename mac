@@ -136,6 +136,8 @@ install_asdf_language() {
   then
     asdf install "$language" "$version"
     asdf global "$language" "$version"
+  else
+    print_warn "Version %s already installed" "$version"
   fi
 }
 
@@ -206,7 +208,7 @@ if [ ! -d "$HOME/code_support/dotfiles" ]
 then
   print_header "Installing dotfiles"
   git clone https://github.com/jasonpilz/dotfiles.git "$HOME/code_support/dotfiles"
-  active=(
+  passive=(
     agignore
     aliases
     gitignore_global
@@ -218,11 +220,17 @@ then
     rspec
     tmux.conf
     vimrc
+  )
+
+  force=(
     zshrc
   )
 
-  for dotfile in "${active[@]}"; do
+  for dotfile in "${passive[@]}"; do
     ln -s "$HOME/code_support/dotfiles/$dotfile" "$HOME/.$dotfile"
+  done
+  for dotfile in "${force[@]}"; do
+    ln -sf "$HOME/code_support/dotfiles/$dotfile" "$HOME/.$dotfile"
   done
 else
   print_warn "Dotfiles already installed"
