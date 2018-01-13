@@ -131,7 +131,7 @@ can be added there.
 - [  ] Brewfile errors
   ```sh
   htop
-
+  gpg-suite
   ```
 
 ## Credits

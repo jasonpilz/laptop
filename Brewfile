@@ -54,8 +54,6 @@ brew 'imagemagick'
 brew 'libyaml'
 brew 'coreutils'
 brew 'yarn'
-brew 'gpg-suite'
-
 cask 'java'
 cask 'alfred'
 cask 'authy'

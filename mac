@@ -8,11 +8,11 @@ end=$'\e[0m'
 # Helpers
 # -----------------------------------------------------------------------------
 print_header() {
-  printf "%s\\n\\n===> %s \\n\\n%s" "$cyn" "$1" "$end"
+  printf "%s\\n\\n===> %s \\n%s" "$cyn" "$1" "$end"
 }
 
 print_warn() {
-  printf "%s\\nWarn: $1%s\\n\\n" "$yel" "$end"
+  printf "%s\\nWarn: $1%s\\n" "$yel" "$end"
 }
 
 append_to_file() {
@@ -34,10 +34,10 @@ tap_is_installed() {
 
 gem_install_or_update() {
   if gem list "$1" | grep "^$1 ("; then
-    print_header "Updating %s" "$1"
+    print_header "Updating $1"
     gem update "$@"
   else
-    print_header "Installing %s" "$1"
+    print_header "Installing $1"
     gem install "$@"
   fi
 }
@@ -105,13 +105,15 @@ fi
 
 # ASDF
 # -----------------------------------------------------------------------------
-print_header "Configuring asdf version manager"
 if [ ! -d "$HOME/.asdf" ]
 then
+  print_header "Configuring asdf version manager"
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.1
 
   # shellcheck disable=SC1090
   source "$HOME/.asdf/asdf.sh"
+else
+  print_warn "ASDF already installed. Skipping"
 fi
 
 
@@ -187,6 +189,8 @@ then
   git clone https://github.com/powerline/fonts.git --depth=1
 
   ./fonts/install.sh
+else
+  print_warn "Powerline Fonts already installed"
 fi
 
 # Oh-my-zsh
@@ -196,6 +200,8 @@ then
   print_header "Installing Oh-my-zsh"
   cd || true
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+else
+  print_warn "Oh-my-Zsh already installed"
 fi
 
 # Dotfiles
@@ -222,23 +228,33 @@ then
   for dotfile in "${active[@]}"; do
     ln -s "$HOME/code_support/dotfiles/$dotfile" "$HOME/.$dotfile"
   done
+else
+  print_warn "Dotfiles already installed"
 fi
 
 # Vundle and install plugins
 # -----------------------------------------------------------------------------
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]
 then
+  print_header "Installing Vundle"
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+  print_header "Installing Vim plugins"
   vim +PluginInstall +qall
+else
+  print_warn "Vundle already installed"
 fi
 
 # Support split DNS with openconnect
 # -----------------------------------------------------------------------------
 if [ ! -f /usr/local/etc/vpnc-script.bak ]
 then
+  print_header "Configuring split DNS for openconnect"
   mv /usr/local/etc/vpnc-script /usr/local/etc/vpnc-script.bak
   curl "https://raw.githubusercontent.com/batmanppc/vpnc-scripts/43e21edbf1683804f08364cef7269ed7bc81687c/vpnc-script" > /usr/local/etc/vpnc-script
   chmod +x /usr/local/etc/vpnc-script
+else
+  print_warn "Split DNS already configured"
 fi
 
 # Customizations
