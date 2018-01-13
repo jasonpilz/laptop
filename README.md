@@ -3,7 +3,7 @@
 > A script to setup/install/upgrade my preferred apps & configurations for web
 development.
 
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)](https://travis-ci.org/jasonpilz/laptop)
+![Build Status](https://travis-ci.org/jasonpilz/laptop.svg?branch=master)
 
 ## Usage
 
