@@ -3,6 +3,7 @@
 # red=$'\e[0;31m'
 yel=$'\e[0;33m'
 cyn=$'\e[0;36m'
+grn=$'\e[0;32m'
 end=$'\e[0m'
 
 # Helpers
@@ -13,6 +14,10 @@ print_header() {
 
 print_warn() {
   printf "%sWarn: $1%s\\n" "$yel" "$end"
+}
+
+print_success() {
+  printf "%s$1%s\\n" "$grn" "$end"
 }
 
 append_to_file() {
@@ -48,20 +53,26 @@ mkdir -p {"$HOME/code","$HOME/code_support"}
 
 # Homebrew
 # -----------------------------------------------------------------------------
+print_header "Homebrew"
 if ! command -v brew >/dev/null
 then
-  print_header "Installing Homebrew"
     curl -fsSL \
       'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
+
+  print_success "Installation complete"
 else
-  print_warn "Homebrew already installed. Skipping"
+  print_warn "Already installed. Skipping"
 fi
 
+print_header "Brew-cask"
 # https://github.com/caskroom/homebrew-cask/releases/tag/v0.60.0
 if brew_is_installed 'brew-cask'
 then
   print_header "Removing legacy brew-cask since its now part of caskroom/cask"
   brew uninstall --force 'brew-cask'
+  print_success "Removal complete"
+else
+  print_warn "Already un-installed. Skipping"
 fi
 
 if tap_is_installed 'caskroom/versions'
@@ -72,48 +83,50 @@ fi
 # print_header "Updating Homebrew ..."
 # cd "$(brew --repo)" && git fetch && git reset --hard origin/master && brew update
 
-print_header "Verifying the Homebrew installation"
+print_header "Homebrew verification"
 if brew doctor
 then
-  print_header "Your Homebrew installation is good to go"
+  print_success "Installation is good to go"
 else
-  print_warn "Your Homebrew installation reported some errors or warnings"
+  print_warn "Installation reported some errors or warnings"
 fi
 
-print_header "Installing formulas and casks from the Brewfile"
+print_header "Brewfile"
 # https://github.com/Homebrew/brew/issues/1151
 brew update --force
 if brew bundle --file="$HOME/Brewfile"
 then
-  print_header "All formulas and casks were installed successfully"
+  print_success "All formulas and casks were installed successfully"
 else
   print_warn "Some formulas or casks failed to install"
 fi
 
-print_header "Cleaning up old Homebrew formulae"
+print_header "Homebrew cleanup"
 brew cleanup
 brew cask cleanup
 
 # Xcode
 # -----------------------------------------------------------------------------
+print_header "Xcode command line tools"
 if xcode-select --install
 then
-  print_header "Installed xcode commandline tools"
+  print_success "Installation complete"
 else
-  print_warn "Xcode commandline tools already installed. Skipping"
+  print_warn "Already installed. Skipping"
 fi
 
 # ASDF
 # -----------------------------------------------------------------------------
+print_header "ASDF version manager"
 if [ ! -d "$HOME/.asdf" ]
 then
-  print_header "Configuring asdf version manager"
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.1
 
   # shellcheck disable=SC1090
   source "$HOME/.asdf/asdf.sh"
+  print_success "Installation complete"
 else
-  print_warn "ASDF already installed. Skipping"
+  print_warn "Already installed. Skipping"
 fi
 
 
@@ -170,43 +183,48 @@ install_asdf_language "golang"
 
 # Rubygems and Bundler
 # -----------------------------------------------------------------------------
-print_header "Updating Rubygems"
+print_header "Rubygems"
 gem update --system
-print_header "Installing Bundler"
+
+print_header "Bundler"
 gem_install_or_update "bundler"
 
-print_header "Bundle config jobs"
+print_header "Bundle jobs config"
 number_of_cores=$(sysctl -n hw.ncpu)
 bundle config --global jobs $((number_of_cores - 1))
 
 # Powerline fonts
 # -----------------------------------------------------------------------------
+print_header "Powerline Fonts"
 if [ ! -d "$HOME/code_support/fonts" ]
 then
-  print_header "Installing Powerline Fonts"
   git clone https://github.com/powerline/fonts.git --depth=1 "$HOME/code_support/fonts"
 
   ~/code_support/fonts/install.sh
+
+  print_success "Installation complete"
 else
-  print_warn "Powerline Fonts already installed"
+  print_warn "Already installed. Skipping"
 fi
 
 # Oh-my-zsh
 # -----------------------------------------------------------------------------
+print_header "Oh-my-zsh"
 if [ ! -d "$HOME/.oh-my-zsh" ]
 then
-  print_header "Installing Oh-my-zsh"
   cd || true
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+  print_success "Installation complete"
 else
-  print_warn "Oh-my-Zsh already installed"
+  print_warn "Already installed. Skipping"
 fi
 
 # Dotfiles
 # -----------------------------------------------------------------------------
+print_header "Dotfiles"
 if [ ! -d "$HOME/code_support/dotfiles" ]
 then
-  print_header "Installing dotfiles"
   git clone https://github.com/jasonpilz/dotfiles.git "$HOME/code_support/dotfiles"
   passive=(
     agignore
@@ -232,39 +250,43 @@ then
   for dotfile in "${force[@]}"; do
     ln -sf "$HOME/code_support/dotfiles/$dotfile" "$HOME/.$dotfile"
   done
+  print_success "Installation complete"
 else
-  print_warn "Dotfiles already installed"
+  print_warn "Already installed. Skipping"
 fi
 
 # Vundle and install plugins
 # -----------------------------------------------------------------------------
+print_header "Vundle"
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]
 then
-  print_header "Installing Vundle"
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-  print_header "Installing Vim plugins"
   vim +PluginInstall +qall
+  print_success "Installation and plugin install complete"
 else
-  print_warn "Vundle already installed"
+  print_warn "Already installed. Skipping"
 fi
 
 # Support split DNS with openconnect
 # -----------------------------------------------------------------------------
+print_header "Split DNS"
 if [ ! -f /usr/local/etc/vpnc-script.bak ]
 then
-  print_header "Configuring split DNS for openconnect"
   mv /usr/local/etc/vpnc-script /usr/local/etc/vpnc-script.bak
   curl "https://raw.githubusercontent.com/batmanppc/vpnc-scripts/43e21edbf1683804f08364cef7269ed7bc81687c/vpnc-script" > /usr/local/etc/vpnc-script
   chmod +x /usr/local/etc/vpnc-script
+
+  print_success "Configuration complete"
 else
-  print_warn "Split DNS already configured"
+  print_warn "Already configured. Skipping"
 fi
 
 # Customizations
 # -----------------------------------------------------------------------------
-if [ -f "$HOME/.laptop.local" ]; then
-  print_header "Running customizations from ~/.laptop.local ..."
+print_header "Overrides from ~/.laptop.local"
+if [ -f "$HOME/.laptop.local" ]
+then
   # shellcheck disable=SC1090
   . "$HOME/.laptop.local"
 fi
