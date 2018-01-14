@@ -225,7 +225,7 @@ fi
 print_header "Dotfiles"
 if [ ! -d "$HOME/code_support/dotfiles" ]
 then
-  local dotfiles="$HOME/code_support/dotfiles"
+  dotfiles="$HOME/code_support/dotfiles"
   git clone https://github.com/jasonpilz/dotfiles.git "$dotfiles"
   passive=(
     agignore
