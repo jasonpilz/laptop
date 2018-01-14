@@ -53,6 +53,7 @@ bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop)
 [Github Desktop]: https://desktop.github.com/
 [Atom]: https://atom.io/
 [iTerm2]: https://www.iterm2.com/
+[SSH key]: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 
 **Mac OS Tools**
 * [Xcode] - Command Line Tools
@@ -88,6 +89,7 @@ general-purpose programming
 * [Split DNS] - Replace `vpnc-script` that openconnect ships with to support split DNS configuration
 * [Dotfiles] - Install my personal dotfiles/configurations
 * [Karabiner] - Configure caps lock with split personality (esc on press, ctrl on hold)
+* [SSH key] - Generate an SSH key and add to `ssh-agent` for easy Github authentication
 
 **Databases / Brokers**
 * [PostgreSQL] - Relational DBMS
@@ -169,6 +171,10 @@ can be added there.
   Packages
     vim-mode-plus
     autosave
+
+  Editor
+    Font size: 12
+    check show invisibles
   ```
 
 - [ ] Brewfile errors
