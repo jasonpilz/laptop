@@ -225,7 +225,8 @@ fi
 print_header "Dotfiles"
 if [ ! -d "$HOME/code_support/dotfiles" ]
 then
-  git clone https://github.com/jasonpilz/dotfiles.git "$HOME/code_support/dotfiles"
+  local dotfiles="$HOME/code_support/dotfiles"
+  git clone https://github.com/jasonpilz/dotfiles.git "$dotfiles"
   passive=(
     agignore
     aliases
@@ -245,11 +246,15 @@ then
   )
 
   for dotfile in "${passive[@]}"; do
-    ln -s "$HOME/code_support/dotfiles/$dotfile" "$HOME/.$dotfile"
+    ln -s "$dotfiles/$dotfile" "$HOME/.$dotfile"
   done
+
   for dotfile in "${force[@]}"; do
-    ln -sf "$HOME/code_support/dotfiles/$dotfile" "$HOME/.$dotfile"
+    ln -sf "$dotfiles/$dotfile" "$HOME/.$dotfile"
   done
+
+  ln -s "$dotfiles/karabiner" "$HOME/.config"
+
   print_success "Installation complete"
 else
   print_warn "Already installed. Skipping"

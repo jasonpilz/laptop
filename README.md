@@ -47,6 +47,7 @@ bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop)
 [Docker for Mac]: https://www.docker.com/docker-mac
 [Postman]: https://www.getpostman.com/
 [Karabiner-Elements]: https://github.com/tekezo/Karabiner-Elements
+[Karabiner]: https://pqrs.org/osx/karabiner/complex_modifications/
 [Flux]: https://justgetflux.com/
 [Authy]: https://authy.com/
 [Github Desktop]: https://desktop.github.com/
@@ -86,6 +87,7 @@ general-purpose programming
 * [Powerline fonts] - Patched fonts for Powerline users
 * [Split DNS] - Replace `vpnc-script` that openconnect ships with to support split DNS configuration
 * [Dotfiles] - Install my personal dotfiles/configurations
+* [Karabiner] - Configure caps lock with split personality (esc on press, ctrl on hold)
 
 **Databases / Brokers**
 * [PostgreSQL] - Relational DBMS
@@ -110,6 +112,8 @@ can be added there.
 
 ## TODO
 
+- git diff so fancy
+
 - [ ] Oracle Instant Client (separate script)
     ```sh
     tap instantclienttap/instantclient
@@ -119,25 +123,52 @@ can be added there.
     ```
 
 - [ ] OS X Native Customization
-  ```sh
-  - key repeat speed
-  - key mappings
-  - dock settings
-  - trackpad - tap to click
-  - trackpad - app expose
+  ```txt
+  Settings -> Dock
+    Size: 20%
+    Magnification: 25%
+    check 'Automatically hide and show the Dock'
+    Minimize windows using: Scale effect
+
+  Settings -> Trackpad
+    check tap to click
+    check app expose
+
+  Settings -> Keyboard
+    key repeat = fast
+    delay until repeat = short
+    modifier keys -> Caps lock = Control
+
+  Settings -> Bluetooth
+    check Show Bluetooth in menu bar
   ```
 
 - [ ] Customize iTerm2
-  ```sh
-  Profiles -> Text -> Font
-    12pt Roboto Mono for Powerline
-    Character spacing Horizontal 93%
-    Character spacing Vertical 93%
-    Use Ligatures
-
+  ```txt
   Appearance -> Tabs
     Tab bar location: Bottom
     Theme: Dark
+
+  Keys -> Hotkey
+    Show/hide all windows with a system-wide hotkey: ctrl-space
+
+  Profiles -> Text -> Font
+    12pt Roboto Mono for Powerline
+    character spacing Horizontal: 93%
+    character spacing Vertical: 93%
+    check Use Ligatures
+
+  Profiles -> General
+    Working Directory: Reuse previous sessions directory
+
+  Profiles -> Colors
+  ```
+
+- [ ] Customize Atom
+  ```sh
+  Packages
+    vim-mode-plus
+    autosave
   ```
 
 - [ ] Brewfile errors
