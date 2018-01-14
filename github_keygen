@@ -10,13 +10,14 @@ print_header() {
 }
 
 print_warn() {
-  printf "%sWarn: $1%s\\n" "$yel" "$end"
+  printf "%s\\nWarn: $1%s\\n\\n" "$yel" "$end"
 }
 
 print_success() {
-  printf "%s$1%s\\n" "$grn" "$end"
+  printf "%s$1%s\\n\\n" "$grn" "$end"
 }
 
+print_warn "Test SSH configuration with ${cyn}ssh -T git@github.com${end}"
 print_header "Github SSH key"
 if [ ! -f "$HOME/.ssh/id_rsa" ]; then
   read -rp 'Github email address: ' email_address
@@ -44,6 +45,7 @@ EOF
   pbcopy < "$HOME/.ssh/id_rsa.pub"
 
   print_success "SSH key id_rsa.pub copied to clipboard. Sending you to Github to add key..."
+  print_warn "Test SSH configuration with ${cyn}ssh -T git@github.com${end}"
   sleep 6
   open https://github.com/settings/keys
 else
