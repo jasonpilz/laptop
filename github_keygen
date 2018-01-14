@@ -1,0 +1,31 @@
+#!/bin/bash
+
+print_header "Github SSH key"
+if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+  read -p 'Github email address: ' email_address
+
+  ssh-keygen -f id_rsa \
+             -t rsa \
+             -b 4096 \
+             -C "$email_address"
+
+  eval "$(ssh-agent -s)"
+
+  if [ ! -f "$HOME/.ssh/config" ]; then
+    cat <<- EOF > "$HOME/.ssh/config"
+    Host *
+     AddKeysToAgent yes
+     UseKeychain yes
+     IdentityFile ~/.ssh/id_rsa
+EOF
+  fi
+
+  ssh-add -K "$HOME/.ssh/id_rsa"
+  pbcopy < cat "$HOME/.ssh/id_rsa.pub"
+
+  print_success "SSH key id_rsa.pub copied to clipboard. Sending you to Github to add key..."
+  sleep 6
+  open https://github.com/settings/keys
+else
+  print_warn "Key pair id_rsa exists. Skipping"
+fi
