@@ -9,7 +9,7 @@ end=$'\e[0m'
 # Helpers
 # -----------------------------------------------------------------------------
 print_header() {
-  printf "%s\\n\\n===> %s \\n%s" "$cyn" "$1" "$end"
+  printf "%s\\n===> %s \\n%s" "$cyn" "$1" "$end"
 }
 
 print_warn() {
@@ -161,24 +161,24 @@ install_asdf_plugin "elixir" "https://github.com/asdf-vm/asdf-elixir.git"
 install_asdf_plugin "python" "https://github.com/tuvistavie/asdf-python.git"
 install_asdf_plugin "golang" "https://github.com/kennyp/asdf-golang.git"
 
-print_header "Installing Ruby"
+print_header "Ruby"
 install_asdf_language "ruby"
 
-print_header "Installing Node"
+print_header "Node"
 # Import the Node.js release team's OpenPGP keys to main keyring:
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 install_asdf_language "nodejs"
 
-print_header "Installing Erlang"
+print_header "Erlang"
 install_asdf_language "erlang" "20.0"
 
-print_header "Installing Elixir"
+print_header "Elixir"
 install_asdf_language "elixir"
 
-print_header "Installing Python"
+print_header "Python"
 install_asdf_language "python"
 
-print_header "Installing Golang"
+print_header "Golang"
 install_asdf_language "golang"
 
 # Rubygems and Bundler
@@ -269,6 +269,27 @@ then
 
   vim +PluginInstall +qall
   print_success "Installation and plugin install complete"
+else
+  print_warn "Already installed. Skipping"
+fi
+
+# Gotham theme for iterm2
+# -----------------------------------------------------------------------------
+print_header "Gotham-contrib"
+if [ ! -d "$HOME/code_support/gotham-contrib-master" ]
+then
+  dest_zipfile="gotham-contrib.zip"
+
+  cd "$HOME/code_support" || true
+
+  wget https://github.com/whatyouhide/iterm2-gotham/archive/master.zip
+  mv master.zip "$dest_zipfile"
+  unzip "$dest_zipfile"
+  rm "$dest_zipfile"
+
+  open ./gotham-contrib-master/iterm2/Gotham.itermcolors
+
+  print_success "Installation complete"
 else
   print_warn "Already installed. Skipping"
 fi

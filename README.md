@@ -115,6 +115,8 @@ can be added there.
 ## TODO
 
 - git diff so fancy
+- fast-cli
+
 
 - [ ] Oracle Instant Client (separate script)
     ```sh
@@ -150,6 +152,9 @@ can be added there.
   Appearance -> Tabs
     Tab bar location: Bottom
     Theme: Dark
+    Panes -> uncheck Show per-pane title bar with split panes
+    Dimming -> check Dimming affects only text, not backgroud
+    Dimming -> Dimming amount: 50%
 
   Keys -> Hotkey
     Show/hide all windows with a system-wide hotkey: ctrl-space
@@ -175,6 +180,7 @@ can be added there.
   Editor
     Font size: 12
     check show invisibles
+    check Auto Indent
   ```
 
 - [ ] Brewfile errors
