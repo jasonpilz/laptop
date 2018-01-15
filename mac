@@ -220,6 +220,19 @@ else
   print_warn "Already installed. Skipping"
 fi
 
+# Oh-my-zsh autosuggestions
+# -----------------------------------------------------------------------------
+print_header "Oh-my-zsh autosuggestions"
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]
+then
+  git clone https://github.com/zsh-users/zsh-autosuggestions \
+            "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+
+  print_success "Installation complete"
+else
+  print_warn "Already installed. Skipping"
+fi
+
 # Dotfiles
 # -----------------------------------------------------------------------------
 print_header "Dotfiles"
