@@ -122,6 +122,7 @@ can be added there.
 - fast-cli
 - export DOFTILES env var
 - use same user dir on all machines
+- install Gotham-custom.itermcolors from dotfiles
 
 - [ ] Oracle Instant Client (separate script)
     ```sh
@@ -130,51 +131,6 @@ can be added there.
     brew instantclienttap/instantclient/instantclient-sdk
     brew instantclienttap/instantclient/instantclient-sqlplus
     ```
-
-- [ ] OS X Native Customization
-  ```txt
-  Settings -> Dock
-    Size: 20%
-    Magnification: 25%
-    check 'Automatically hide and show the Dock'
-    Minimize windows using: Scale effect
-
-  Settings -> Trackpad
-    check tap to click
-    check app expose
-
-  Settings -> Keyboard
-    key repeat = fast
-    delay until repeat = short
-    modifier keys -> Caps lock = Control
-
-  Settings -> Bluetooth
-    check Show Bluetooth in menu bar
-  ```
-
-- [ ] Customize iTerm2
-  ```txt
-  Appearance -> Tabs
-    Tab bar location: Bottom
-    Theme: Dark
-    Panes -> uncheck Show per-pane title bar with split panes
-    Dimming -> check Dimming affects only text, not backgroud
-    Dimming -> Dimming amount: 50%
-
-  Keys -> Hotkey
-    Show/hide all windows with a system-wide hotkey: ctrl-space
-
-  Profiles -> Text -> Font
-    12pt Roboto Mono for Powerline
-    character spacing Horizontal: 93%
-    character spacing Vertical: 93%
-    check Use Ligatures
-
-  Profiles -> General
-    Working Directory: Reuse previous sessions directory
-
-  Profiles -> Colors
-  ```
 
 - [ ] Customize Atom
   ```sh
