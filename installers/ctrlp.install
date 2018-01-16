@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -e
+
+cyn=$'\e[0;36m'
+yel=$'\e[0;33m'
+grn=$'\e[0;32m'
+end=$'\e[0m'
+
+print_header() {
+  printf "%s\\n===> %s \\n%s" "$cyn" "$1" "$end"
+}
+
+print_warn() {
+  printf "%sWarn: $1%s\\n" "$yel" "$end"
+}
+
+print_success() {
+  printf "%s$1%s\\n" "$grn" "$end"
+}
+
+print_header "ctrlp.vim"
+if [ ! -d "$HOME/.vim/bundle/ctrlp.vim" ]
+then
+  git clone https://github.com/kien/ctrlp.vim.git "$HOME/.vim/bundle/ctrlp.vim"
+
+  print_success "Installation complete"
+else
+  print_warn "Already installed. Skipping"
+fi
