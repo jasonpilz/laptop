@@ -55,6 +55,7 @@ bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop)
 [iTerm2]: https://www.iterm2.com/
 [SSH key]: https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 [Gotham theme]: https://github.com/whatyouhide/gotham-contrib
+[Zsh autosuggestions]: https://github.com/zsh-users/zsh-autosuggestions
 
 **Mac OS Tools**
 * [Xcode] - Command Line Tools
@@ -92,6 +93,7 @@ general-purpose programming
 * [Karabiner] - Configure caps lock with split personality (esc on press, ctrl on hold)
 * [SSH key] - Generate an SSH key and add to `ssh-agent` for easy Github authentication
 * [Gotham theme] - Download and load iterm2 gotham theme
+* [Zsh autosuggestions] - Fish-like autosuggestions for zsh
 
 **Databases / Brokers**
 * [PostgreSQL] - Relational DBMS
@@ -118,7 +120,8 @@ can be added there.
 
 - git diff so fancy
 - fast-cli
-
+- export DOFTILES env var
+- use same user dir on all machines
 
 - [ ] Oracle Instant Client (separate script)
     ```sh
