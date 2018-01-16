@@ -1,0 +1,46 @@
+#!/bin/bash
+
+set -e
+
+cyn=$'\e[0;36m'
+yel=$'\e[0;33m'
+grn=$'\e[0;32m'
+end=$'\e[0m'
+
+print_header() {
+  printf "%s\\n===> %s \\n%s" "$cyn" "$1" "$end"
+}
+
+print_warn() {
+  printf "%sWarn: $1%s\\n" "$yel" "$end"
+}
+
+print_success() {
+  printf "%s$1%s\\n" "$grn" "$end"
+}
+
+export DOTFILES="$HOME/code_support/dotfiles"
+
+print_header "Iterm2 link profiles"
+if [ -d "$DOTFILES/iterm2/profiles" ]
+then
+  mkdir -p "$HOME/Library/Application Support/iTerm2"
+  rm -rf "$HOME/Library/Application Support/iTerm2/DynamicProfiles"
+
+  ln -sfF "$DOTFILES/iterm2/profiles" "$HOME/Library/Application Support/iTerm2/DynamicProfiles"
+
+  print_success "Linking complete"
+else
+  print_warn "No profiles directory available at ~/code_support/dotfiles/iterm2/profiles"
+fi
+
+print_header "Iterm2 link preferences"
+if [ -f "$DOTFILES/iterm2/com.googlecode.iterm2.plist" ]
+then
+  defaults write com.googlecode.iterm2 PrefsCustomFolder -string ~/code_support/dotfiles/iterm2
+  defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+  print_success "Linking complete"
+else
+  print_warn "No preference file available at ~/code_support/dotfiles/iterm2/com.googlecode.iterm2.plist"
+fi

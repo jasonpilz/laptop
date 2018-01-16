@@ -1,0 +1,55 @@
+#!/bin/bash
+
+set -e
+
+yel=$'\e[0;33m'
+cyn=$'\e[0;36m'
+grn=$'\e[0;32m'
+end=$'\e[0m'
+
+print_header() {
+  printf "%s\\n===> %s \\n%s" "$cyn" "$1" "$end"
+}
+
+print_warn() {
+  printf "%s\\nWarn: $1%s\\n\\n" "$yel" "$end"
+}
+
+print_success() {
+  printf "%s$1%s\\n\\n" "$grn" "$end"
+}
+
+print_warn "Test SSH configuration with ${cyn}ssh -T git@github.com${end}"
+print_header "Github SSH key"
+if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+  read -rp 'Github email address: ' email_address
+
+  ssh-keygen -f "$HOME/.ssh/id_rsa" \
+             -t rsa \
+             -b 4096 \
+             -C "$email_address"
+
+  eval "$(ssh-agent -s)"
+
+  if [ ! -f "$HOME/.ssh/config" ]; then
+cat <<- EOF > "$HOME/.ssh/config"
+Host *
+  IgnoreUnknown UseKeychain
+  UseRoaming no
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+EOF
+  fi
+
+  ssh-add "$HOME/.ssh/id_rsa"
+
+  pbcopy < "$HOME/.ssh/id_rsa.pub"
+
+  print_success "SSH key id_rsa.pub copied to clipboard. Sending you to Github to add key..."
+  print_warn "Test SSH configuration with ${cyn}ssh -T git@github.com${end}"
+  sleep 6
+  open https://github.com/settings/keys
+else
+  print_warn "Key pair id_rsa exists. Skipping"
+fi
