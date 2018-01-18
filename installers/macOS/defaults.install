@@ -2,8 +2,21 @@
 
 # OS X Settings
 
-# Settings -> Bluetooth
-#   check Show Bluetooth in menu bar
+# TODO:
+#
+# Keyboard
+# -> modifier keys -> Caps lock = Control
+
+# Bluetooth
+# -> check Show Bluetooth in menu bar
+
+# Dock
+# -> Magnification
+
+# Trackpad
+# -> App Expose
+
+
 
 # Close any open System Preferences panes, to prevent them from overriding settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -11,39 +24,57 @@ osascript -e 'tell application "System Preferences" to quit'
 # Ask for the administrator password upfront
 sudo -v
 
-# <-------------------------- Dock, hot corners ---------------------------->
+# <------------------------------ General ---------------------------------->
+# System Preferences -> General
 
-# System Preferences -> General -> Use dark menu bar and Dock
+# Use dark menu bar and Dock
 defaults write NSGlobalDomain AppleInterfaceStyle Dark
 
-# System Preferences -> Dock -> Automatically hide and show the dock
-defaults write com.apple.dock autohide -bool true
+# Appearance: Graphite
+defaults write NSGlobalDomain AppleAquaColorVariant -int 6
 
-# System Preferences -> Dock -> Minimize windows using: Scale effect
-defaults write com.apple.dock mineffect -string "scale"
+# Highlight Color: Graphite
+defaults write NSGlobalDomain AppleHighlightColor -string "0.780400 0.815700 0.858800"
 
-# Size
-defaults write com.apple.dock tilesize -int 36
 
-# Magnification
+# <----------------------- Desktop & Screen Saver -------------------------->
+# System Preferences -> Desktop & Screen Saver
 
-# System Preferences -> Desktop & Screen Saver -> Hot Corners -> Bottom-Left
+# Hot Corners -> Bottom-Left
 # Put display to sleep
 defaults write com.apple.dock wvous-bl-corner -int 10
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
-# <----------------------------- Trackpad ---------------------------------->
+# Move screen shots to ~/Pictures/Screen Captures
+mkdir -p ~/Pictures/Screen\ Captures
+defaults write com.apple.screencapture location ~/Pictures/Screen\ Captures
 
-# System Preferences -> Trackpad -> Tap to click
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# System Preferences -> Trackpad -> App Expose
+# <------------------------------- Dock ------------------------------------>
+# System Preferences -> Dock
+
+# Size:
+defaults write com.apple.dock tilesize -int 36
+
+# [x] Automatically hide and show the dock
+defaults write com.apple.dock autohide -bool true
+
+# Minimize windows using: Scale effect
+defaults write com.apple.dock mineffect -string "scale"
+
 
 # <----------------------------- Keyboard ---------------------------------->
+# System Preferences -> Keyboard
 
-# System Preferences -> Keyboard -> Key repeat
+# Key repeat
 defaults write NSGlobalDomain KeyRepeat -int 0.02
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
-# modifier keys -> Caps lock = Control
+
+# <----------------------------- Trackpad ---------------------------------->
+# System Preferences -> Trackpad
+
+# Tap to click
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
