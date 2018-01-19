@@ -75,6 +75,7 @@ cask 'karabiner-elements'
 cask 'datagrip'
 cask 'sequel-pro'
 cask 'github'
+cask 'ghost'
 
 mas "1Password",       id: 443987910
 mas "DaisyDisk",       id: 411643860
