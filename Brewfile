@@ -76,6 +76,7 @@ cask 'datagrip'
 cask 'sequel-pro'
 cask 'github'
 cask 'ghost'
+cask 'plex-media-player'
 
 mas "1Password",       id: 443987910
 mas "DaisyDisk",       id: 411643860
