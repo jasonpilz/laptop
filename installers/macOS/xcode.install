@@ -20,3 +20,12 @@ defaults write com.apple.dt.Xcode DVTTextPageGuideLocation -int 80
 
 # Enable internal debug menu
 defaults write com.apple.dt.Xcode ShowDVTDebugMenu -bool true
+
+# Download Gotham theme
+curl https://github.com/whatyouhide/gotham-contrib/blob/master/xcode/Gotham.dvtcolortheme \
+  --create-dirs \
+  -o ~/Library/Developer/Xcode/UserData/FontAndColorThemes/Gotham.dvtcolortheme
+
+# TODO: Set custom theme
+
+# TODO: Set 2 spaces for indent

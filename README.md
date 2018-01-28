@@ -119,10 +119,20 @@ can be added there.
 ## TODO
 
 - git diff so fancy
-- fast-cli
 - export DOFTILES env var
 - use same user dir on all machines
 - install Gotham-custom.itermcolors from dotfiles
+
+- [ ] npm install -g (Be sure to `asdf reshim nodejs` after)
+    ```sh
+    fast-cli
+    json
+    ```
+
+- [ ] pip install (Be sure to `asdf reshim python` after)
+    ```sh
+    pygments
+    ```
 
 - [ ] Oracle Instant Client (separate script)
     ```sh

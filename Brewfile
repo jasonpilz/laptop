@@ -55,6 +55,7 @@ brew 'imagemagick'
 brew 'libyaml'
 brew 'coreutils'
 brew 'yarn'
+brew 'screenfetch'
 
 cask 'gpg-suite'
 cask 'java'
