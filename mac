@@ -281,6 +281,7 @@ then
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
   vim +PluginInstall +qall
+  vim +GoInstallBinaries
   print_success "Installation and plugin install complete"
 else
   print_warn "Already installed. Skipping"

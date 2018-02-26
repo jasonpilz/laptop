@@ -14,6 +14,13 @@ From the terminal:
 bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop)
 ```
 
+### Additional
+
+There are additional stand-alone installers for various purposes in the
+[installers/](https://github.com/jasonpilz/laptop/tree/master/installers)
+directory.
+
+
 ## What it sets up
 
 [Xcode]: https://developer.apple.com/xcode/features/
@@ -119,9 +126,11 @@ can be added there.
 ## TODO
 
 - git diff so fancy
-- export DOFTILES env var
-- use same user dir on all machines
+- export DOFTILES env var + ask for it at start of script with my default
 - install Gotham-custom.itermcolors from dotfiles
+- script for cloning all repos
+- script for global install of useful rubygems
+- script for global install of useful npm packages
 
 - [ ] npm install -g (Be sure to `asdf reshim nodejs` after)
     ```sh
@@ -154,15 +163,9 @@ can be added there.
     check Auto Indent
   ```
 
-- [ ] Brewfile errors
+- Brewfile
   ```sh
-  htop
-  ```
-
-- [ ] Mas errors
-  ```sh
-  mas "World Clock Pro", id: 858446756
-  mas "Should I Sleep",  id: 560851219
+  htop # not yet supported on High Sierra
   ```
 
 ## Credits
