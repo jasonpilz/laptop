@@ -10,6 +10,7 @@ brew 'openssh'
 brew 'autoconf'
 brew "universal-ctags", args: ["HEAD"]
 brew 'openconnect'
+brew 'htop'
 brew 'ack'
 brew 'awscli'
 brew 'bash'
@@ -56,6 +57,7 @@ brew 'libyaml'
 brew 'coreutils'
 brew 'yarn'
 brew 'screenfetch'
+brew 'diff-so-fancy'
 
 cask 'gpg-suite'
 cask 'java'
@@ -78,6 +80,7 @@ cask 'sequel-pro'
 cask 'github'
 cask 'ghost'
 cask 'plex-media-player'
+cask 'mplayerx'
 
 mas "1Password",       id: 443987910
 mas "DaisyDisk",       id: 411643860

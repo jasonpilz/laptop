@@ -125,7 +125,6 @@ can be added there.
 
 ## TODO
 
-- git diff so fancy
 - export DOFTILES env var + ask for it at start of script with my default
 - install Gotham-custom.itermcolors from dotfiles
 - script for cloning all repos
@@ -161,11 +160,6 @@ can be added there.
     Font size: 12
     check show invisibles
     check Auto Indent
-  ```
-
-- Brewfile
-  ```sh
-  htop # not yet supported on High Sierra
   ```
 
 ## Credits

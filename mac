@@ -243,6 +243,7 @@ then
   passive=(
     agignore
     aliases
+    gitconfig
     gitignore_global
     gvimrc
     htoprc
