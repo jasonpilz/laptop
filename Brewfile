@@ -81,6 +81,7 @@ cask 'github'
 cask 'ghost'
 cask 'plex-media-player'
 cask 'mplayerx'
+cask 'boostnote'
 
 mas "1Password",       id: 443987910
 mas "DaisyDisk",       id: 411643860

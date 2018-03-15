@@ -20,7 +20,6 @@ There are additional stand-alone installers for various purposes in the
 [installers/](https://github.com/jasonpilz/laptop/tree/master/installers)
 directory.
 
-
 ## What it sets up
 
 [Xcode]: https://developer.apple.com/xcode/features/
@@ -161,6 +160,10 @@ can be added there.
     check show invisibles
     check Auto Indent
   ```
+
+## Supported
+
+Tested on Mac OS X 10.13.2 (High Sierra)
 
 ## Credits
 
