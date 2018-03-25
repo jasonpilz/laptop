@@ -58,6 +58,8 @@ brew 'coreutils'
 brew 'yarn'
 brew 'screenfetch'
 brew 'diff-so-fancy'
+brew 'kubectl'
+brew 'docker-machine-driver-xhyve'
 
 cask 'gpg-suite'
 cask 'java'
@@ -82,6 +84,7 @@ cask 'ghost'
 cask 'plex-media-player'
 cask 'mplayerx'
 cask 'boostnote'
+cask 'minikube'
 
 mas "1Password",       id: 443987910
 mas "DaisyDisk",       id: 411643860
