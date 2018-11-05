@@ -12,6 +12,7 @@ brew "universal-ctags", args: ["HEAD"]
 brew 'openconnect'
 brew 'htop'
 brew 'ack'
+brew 'bat'
 brew 'awscli'
 brew 'bash'
 brew "asciinema"
