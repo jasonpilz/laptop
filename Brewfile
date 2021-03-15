@@ -1,6 +1,6 @@
 cask_args appdir: '/Applications'
 
-tap 'caskroom/cask'
+tap 'homebrew/cask'
 tap 'homebrew/services'
 tap "universal-ctags/universal-ctags"
 
