@@ -35,7 +35,6 @@ brew 'kubectl'
 brew 'libyaml'
 brew 'logstash'
 brew 'mas'
-brew 'mongodb', restart_service: :changed
 brew 'mysql', restart_service: :changed
 brew 'nmap'
 brew 'node'
@@ -79,14 +78,14 @@ cask 'docker'
 cask 'github'
 cask 'gpg-suite'
 cask 'iterm2'
-cask 'java'
 cask 'karabiner-elements'
 cask 'ngrok'
-cask 'minikube'
 cask 'postman'
 cask 'spotify'
 
-mas '1Password', id: 443987910
+# `mas list` to show mac app store installed apps
+# https://github.com/mas-cli/mas
+mas '1Password', id: 1333542190
 mas 'DaisyDisk', id: 411643860
 mas 'Divvy',     id: 413857545
 mas 'Slack',     id: 803453959
