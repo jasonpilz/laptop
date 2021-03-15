@@ -4,7 +4,7 @@ set -eouv pipefail
 
 cd ~
 
-curl -O https://raw.githubusercontent.com/jasonpilz/laptop/master/mac
+curl -O https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop_installer
 curl -O https://raw.githubusercontent.com/jasonpilz/laptop/master/Brewfile
 
-/usr/bin/env bash mac 2>&1 | tee ~/laptop.log
+/usr/bin/env bash mac 2>&1 | tee ~/laptop_installer.log

@@ -111,7 +111,6 @@ general-purpose programming
 * [Docker for Mac] - Application containerization
 * [Postman] - API testing
 * [Karabiner-Elements] - Keyboard customization tool
-* [Flux] - Screen color adjustment
 * [Authy] - 2FA
 * [Github Desktop] - Desktop git client
 * [Atom] - Code editor

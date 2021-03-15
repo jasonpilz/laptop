@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# red=$'\e[0;31m'
 yel=$'\e[0;33m'
 cyn=$'\e[0;36m'
 grn=$'\e[0;32m'
@@ -56,8 +55,7 @@ mkdir -p {"$HOME/code","$HOME/code_support"}
 print_header "Homebrew"
 if ! command -v brew >/dev/null
 then
-    curl -fsSL \
-      'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   print_success "Installation complete"
 else
