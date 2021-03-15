@@ -1,4 +1,4 @@
-<img src="osx_laptop.png" align="right" />
+<img src="_images/osx_laptop.png" align="right" />
 
 # Laptop
 
@@ -54,7 +54,6 @@ directory.
 [Postman]: https://www.getpostman.com/
 [Karabiner-Elements]: https://github.com/tekezo/Karabiner-Elements
 [Karabiner]: https://pqrs.org/osx/karabiner/complex_modifications/
-[Flux]: https://justgetflux.com/
 [Authy]: https://authy.com/
 [Github Desktop]: https://desktop.github.com/
 [Atom]: https://atom.io/
