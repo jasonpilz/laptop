@@ -14,9 +14,9 @@ From the terminal:
 bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop.setup)
 ```
 
-**Alternatively, if you have `wget` and want to run installers manually:**
+**Alternatively, if you have `svn` and want to run installers manually:**
 ```sh
-wget -r https://raw.githubusercontent.com/jasonpilz/laptop/master/.laptop
+svn export https://github.com/jasonpilz/laptop/trunk/.laptop
 ```
 
 ### Additional
