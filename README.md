@@ -11,7 +11,12 @@ development.
 
 From the terminal:
 ```sh
-bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop)
+bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop.setup)
+```
+
+**Alternatively, if you have `wget` and want to run installers manually:**
+```sh
+wget -r https://raw.githubusercontent.com/jasonpilz/laptop/master/.laptop
 ```
 
 ### Additional
