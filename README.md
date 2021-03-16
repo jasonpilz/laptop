@@ -22,8 +22,7 @@ wget -r https://raw.githubusercontent.com/jasonpilz/laptop/master/.laptop
 ### Additional
 
 There are additional stand-alone installers for various purposes in the
-[installers/](https://github.com/jasonpilz/laptop/tree/master/installers)
-directory.
+[.laptop/](https://github.com/jasonpilz/laptop/tree/master/.laptop) directory.
 
 ## What it sets up
 
