@@ -5,6 +5,9 @@ cyn=$'\e[0;36m'
 grn=$'\e[0;32m'
 end=$'\e[0m'
 
+# Start from $HOME
+cd ~
+
 # Helpers
 # -----------------------------------------------------------------------------
 print_header() {
@@ -92,7 +95,7 @@ fi
 print_header "Brewfile"
 # https://github.com/Homebrew/brew/issues/1151
 brew update --force
-if brew bundle --file="$HOME/Brewfile"
+if brew bundle --file="$HOME/.laptop/Brewfile"
 then
   print_success "All formulas and casks were installed successfully"
 else

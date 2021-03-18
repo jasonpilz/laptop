@@ -15,6 +15,8 @@ bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop.
 ```
 
 **Alternatively, if you have `svn` and want to run installers manually:**
+
+(Downloads the `.laptop` directory recursively in pwd)
 ```sh
 svn export https://github.com/jasonpilz/laptop/trunk/.laptop
 ```
