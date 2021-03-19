@@ -19,7 +19,7 @@ bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/10.15-catalina
 
 (Downloads the `.laptop` directory recursively in pwd)
 ```sh
-svn export https://github.com/jasonpilz/laptop/banches/10.15-catalina/.laptop
+svn export https://github.com/jasonpilz/laptop/branches/10.15-catalina/.laptop
 ```
 
 ### Additional
