@@ -2,8 +2,9 @@
 
 # Laptop
 
-> A script to setup/install/upgrade my preferred apps & configurations for web
-development.
+> Mac OS `10.15 Catalina`
+
+Scripts and installers for my preferred apps & configurations for software development.
 
 [![Build Status](https://travis-ci.org/jasonpilz/laptop.svg)](https://travis-ci.org/jasonpilz/laptop)
 
@@ -11,14 +12,14 @@ development.
 
 From the terminal:
 ```sh
-bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop.setup)
+bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/10.15-catalina/laptop.setup)
 ```
 
 **Alternatively, if you have `svn` and want to run installers manually:**
 
 (Downloads the `.laptop` directory recursively in pwd)
 ```sh
-svn export https://github.com/jasonpilz/laptop/trunk/.laptop
+svn export https://github.com/jasonpilz/laptop/banches/10.15-catalina/.laptop
 ```
 
 ### Additional
