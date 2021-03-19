@@ -2,7 +2,7 @@
 
 set -eouv pipefail
 
-cd ~
+cd ~ || true
 
 mkdir -p .laptop && cd .laptop
 curl -O https://raw.githubusercontent.com/jasonpilz/laptop/master/.laptop/laptop.install
