@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -eouv pipefail
+
+cd ~ || true
+
+mkdir -p .laptop && cd .laptop
+curl -O https://raw.githubusercontent.com/jasonpilz/laptop/master/.laptop/laptop.install
+curl -O https://raw.githubusercontent.com/jasonpilz/laptop/master/.laptop/Brewfile
+
+/usr/bin/env bash ~/.laptop/laptop.install 2>&1 | tee ~/.laptop/laptop.log

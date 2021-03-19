@@ -1,4 +1,4 @@
-<img src="osx_laptop.png" align="right" />
+<img src="_images/osx_laptop.png" align="right" />
 
 # Laptop
 
@@ -11,14 +11,20 @@ development.
 
 From the terminal:
 ```sh
-bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop)
+bash <(curl -s https://raw.githubusercontent.com/jasonpilz/laptop/master/laptop.setup)
+```
+
+**Alternatively, if you have `svn` and want to run installers manually:**
+
+(Downloads the `.laptop` directory recursively in pwd)
+```sh
+svn export https://github.com/jasonpilz/laptop/trunk/.laptop
 ```
 
 ### Additional
 
 There are additional stand-alone installers for various purposes in the
-[installers/](https://github.com/jasonpilz/laptop/tree/master/installers)
-directory.
+[.laptop/](https://github.com/jasonpilz/laptop/tree/master/.laptop) directory.
 
 ## What it sets up
 
@@ -54,7 +60,6 @@ directory.
 [Postman]: https://www.getpostman.com/
 [Karabiner-Elements]: https://github.com/tekezo/Karabiner-Elements
 [Karabiner]: https://pqrs.org/osx/karabiner/complex_modifications/
-[Flux]: https://justgetflux.com/
 [Authy]: https://authy.com/
 [Github Desktop]: https://desktop.github.com/
 [Atom]: https://atom.io/
@@ -111,7 +116,6 @@ general-purpose programming
 * [Docker for Mac] - Application containerization
 * [Postman] - API testing
 * [Karabiner-Elements] - Keyboard customization tool
-* [Flux] - Screen color adjustment
 * [Authy] - 2FA
 * [Github Desktop] - Desktop git client
 * [Atom] - Code editor
