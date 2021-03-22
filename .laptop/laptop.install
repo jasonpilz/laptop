@@ -198,6 +198,12 @@ number_of_cores=$(sysctl -n hw.ncpu)
 bundle config --global jobs $((number_of_cores - 1))
 print_success "Config updated"
 
+# Powerline
+# -----------------------------------------------------------------------------
+# https://github.com/justjanne/powerline-go
+print_header "Powerline-Go"
+go get -u github.com/justjanne/powerline-go
+
 # Powerline fonts
 # -----------------------------------------------------------------------------
 print_header "Powerline Fonts"
