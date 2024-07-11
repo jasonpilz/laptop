@@ -21,12 +21,10 @@ print_success() {
 
 print_warn "Test SSH configuration with ${cyn}ssh -T git@github.com${end}"
 print_header "Github SSH key"
-if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
   read -rp 'Github email address: ' email_address
 
-  ssh-keygen -f "$HOME/.ssh/id_rsa" \
-             -t rsa \
-             -b 4096 \
+  ssh-keygen -t ed25519 \
              -C "$email_address"
 
   eval "$(ssh-agent -s)"
@@ -38,18 +36,18 @@ Host *
   UseRoaming no
   AddKeysToAgent yes
   UseKeychain yes
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_ed25519
 EOF
   fi
 
-  ssh-add "$HOME/.ssh/id_rsa"
+  ssh-add "$HOME/.ssh/id_ed25519"
 
-  pbcopy < "$HOME/.ssh/id_rsa.pub"
+  pbcopy < "$HOME/.ssh/id_ed25519.pub"
 
-  print_success "SSH key id_rsa.pub copied to clipboard. Sending you to Github to add key..."
+  print_success "SSH key id_ed25519.pub copied to clipboard. Sending you to Github to add key..."
   print_warn "Test SSH configuration with ${cyn}ssh -T git@github.com${end}"
   sleep 6
   open https://github.com/settings/keys
 else
-  print_warn "Key pair id_rsa exists. Skipping"
+  print_warn "Key pair id_ed25519 exists. Skipping"
 fi
