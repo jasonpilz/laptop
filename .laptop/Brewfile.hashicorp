@@ -1,0 +1,14 @@
+cask_args appdir: '/Applications'
+
+tap 'getsentry/tools'
+
+brew 'consul'
+brew 'nomad'
+brew 'terraform'
+brew 'vault'
+
+brew 'gomplate'
+brew 'sshuttle'
+brew 'getsentry/tools/sentry-cli'
+
+cask 'oracle-jdk'
